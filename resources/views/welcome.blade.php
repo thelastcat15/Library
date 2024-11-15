@@ -8,9 +8,6 @@
 </head>
 <body class="bg-gray-100">
     <!-- Navigation remains the same -->
-    <?php 
-    phpinfo();
-    ?>
     <nav class="bg-[#af7aff] shadow-lg">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
