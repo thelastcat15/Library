@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Slide Show */
+.slide {
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide-content {
+  opacity: 0;
+  transition: all 0.7s ease-in-out;
+}
+
+.slide.active .slide-content {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+
+
+
+/* Scroll Div */
+.scroll-div > :last-child {
+  margin-right: 1.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
