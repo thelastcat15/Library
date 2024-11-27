@@ -8,4 +8,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        origin: 'https://library-git-main-firstfenixs-projects.vercel.app/', // Add your HTTPS origin
+    },
 });
