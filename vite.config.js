@@ -11,4 +11,8 @@ export default defineConfig({
     server: {
         origin: 'https://library-git-main-firstfenixs-projects.vercel.app/', // Add your HTTPS origin
     },
+    build: {
+        outDir: 'public/build',
+    },
+    base: '/build/'
 });
