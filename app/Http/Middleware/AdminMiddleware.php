@@ -4,20 +4,22 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Admin;
 
 class AdminMiddleware
 {
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        if (auth()->guest()) {
-            return redirect()->route('login')->with('error', 'กรุณาเข้าสู่ระบบ'); // Redirect unauthenticated users to login
+        // Get the authenticated user
+        $user = Auth::user();
+
+        $admin = Admin::where('username', $user->username)->first();
+
+        if ($admin) {
+            return $next($request);
         }
 
-        if (auth()->user()->is_admin != 1) {
-            return redirect('/')->with('error', 'คุณไม่มีสิทธิ์เข้าถึง'); // Redirect non-admin users
-        }
-
-        return $next($request); // Allow admin users
+        return redirect('/')->with('error', 'You do not have admin access.');
     }
 }

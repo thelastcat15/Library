@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,18 +18,18 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']], $request->remember)) {
             $request->session()->regenerate();
-            return redirect()->intended('/'); // Redirect to home or intended route
+            return redirect()->intended('/admin');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+            'username' => 'The provided credentials do not match our records.',
+        ])->onlyInput('username');
     }
 
     public function logout(Request $request)

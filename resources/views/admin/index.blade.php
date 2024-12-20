@@ -10,8 +10,12 @@
 </head>
 <body>
     <h1>{{ $pageTitle }}</h1>
-    <div>
+    <h1>
         ยินดีต้อนรับสู่หน้า Admin
-    </div>
+        
+    </h1>
+    <h3>
+        Username : {{ Auth::user()->username }}
+    </h3>
 </body>
 </html>
