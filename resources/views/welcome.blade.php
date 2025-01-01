@@ -93,7 +93,7 @@
                     @for ($i = 1; $i <= 6; $i++)
                     <div class="snap-start flex-none w-72 bg-white rounded-lg shadow-lg transform transition-transform hover:scale-105 cursor-pointer">
                         <div class="h-40 bg-gray-200 rounded-t-lg overflow-hidden">
-                            <img src="https://via.placeholder.com/400x250" alt="TopRead {{ $i }}" class="w-full h-full object-cover">
+                            <img src="https://dummyimage.com/400x250/cccccc/af1de0" alt="TopRead {{ $i }}" class="w-full h-full object-cover">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-2">ชื่อเรื่อง {{ $i }}</h3>
@@ -130,7 +130,7 @@
                     @for ($i = 1; $i <= 6; $i++)
                     <div class="snap-start flex-none w-72 bg-white rounded-lg shadow-lg transform transition-transform hover:scale-105 cursor-pointer">
                         <div class="h-40 bg-gray-200 rounded-t-lg overflow-hidden">
-                            <img src="https://via.placeholder.com/400x250" alt="TopRead {{ $i }}" class="w-full h-full object-cover">
+                            <img src="https://dummyimage.com/400x250/cccccc/af1de0" alt="TopRead {{ $i }}" class="w-full h-full object-cover">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-2">ชื่อเรื่อง {{ $i }}</h3>
