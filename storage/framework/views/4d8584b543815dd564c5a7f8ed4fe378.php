@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Business Intellect</title>
-    @vite([
+    <?php echo app('Illuminate\Foundation\Vite')([
         'resources/css/app.css',
         'resources/js/app.js',
         'resources/js/slideshow.js',
         'resources/js/scroll.js'
-    ])
+    ]); ?>
 </head>
 <body class="bg-gray-100">
     <!-- Navigation remains the same -->
@@ -17,7 +17,7 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <img width="300" src="{{ asset('images/logo.png') }}" alt="logo">
+                    <img width="300" src="<?php echo e(asset('images/logo.png')); ?>" alt="logo">
                 </div>
                 <div class="hidden md:flex items-center space-x-4 gap-4">
                     <a href="#" class="text-white hover:text-green-500">ยืม</a>
@@ -95,20 +95,20 @@
             <div class="relative">
                 <div class="overflow-x-auto scrollbar-hide py-8 flex gap-6 snap-x snap-mandatory scroll-div">
                 <div class="snap-start flex-none"></div>
-                    @for ($i = 1; $i <= 6; $i++)
+                    <?php for($i = 1; $i <= 6; $i++): ?>
                     <div class="snap-start flex-none w-72 bg-white rounded-lg shadow-lg transform transition-transform hover:scale-105 cursor-pointer">
                         <div class="h-40 bg-gray-200 rounded-t-lg overflow-hidden">
-                            <img src="https://dummyimage.com/400x250/cccccc/af1de0" alt="TopRead {{ $i }}" class="w-full h-full object-cover">
+                            <img src="https://dummyimage.com/400x250/cccccc/af1de0" alt="TopRead <?php echo e($i); ?>" class="w-full h-full object-cover">
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">ชื่อเรื่อง {{ $i }}</h3>
+                            <h3 class="text-xl font-bold mb-2">ชื่อเรื่อง <?php echo e($i); ?></h3>
                             <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             <div class="mt-4 flex justify-between items-center">
                                 <span class="text-green-500 font-semibold">อ่านต่อ →</span>
                             </div>
                         </div>
                     </div>
-                    @endfor
+                    <?php endfor; ?>
                 </div>
                 <!-- Scroll Buttons -->
                 <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg -ml-5 hover:bg-gray-100">
@@ -132,20 +132,20 @@
             <div class="relative">
                 <div class="overflow-x-auto scrollbar-hide py-8 flex gap-6 snap-x snap-mandatory scroll-div">
                 <div class="snap-start flex-none"></div>
-                    @for ($i = 1; $i <= 6; $i++)
+                    <?php for($i = 1; $i <= 6; $i++): ?>
                     <div class="snap-start flex-none w-72 bg-white rounded-lg shadow-lg transform transition-transform hover:scale-105 cursor-pointer">
                         <div class="h-40 bg-gray-200 rounded-t-lg overflow-hidden">
-                            <img src="https://dummyimage.com/400x250/cccccc/af1de0" alt="TopRead {{ $i }}" class="w-full h-full object-cover">
+                            <img src="https://dummyimage.com/400x250/cccccc/af1de0" alt="TopRead <?php echo e($i); ?>" class="w-full h-full object-cover">
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">ชื่อเรื่อง {{ $i }}</h3>
+                            <h3 class="text-xl font-bold mb-2">ชื่อเรื่อง <?php echo e($i); ?></h3>
                             <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             <div class="mt-4 flex justify-between items-center">
                                 <span class="text-green-500 font-semibold">อ่านต่อ →</span>
                             </div>
                         </div>
                     </div>
-                    @endfor
+                    <?php endfor; ?>
                 </div>
                 <!-- Scroll Buttons -->
                 <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg -ml-5 hover:bg-gray-100">
@@ -162,4 +162,4 @@
         </div>
     </section>
 </body>
-</html>
+</html><?php /**PATH C:\Users\guyza\Downloads\Library\resources\views/welcome.blade.php ENDPATH**/ ?>

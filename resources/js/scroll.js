@@ -1,4 +1,4 @@
-export function scroll() {
+function scroll() {
     const scrollContainers = document.querySelectorAll('.overflow-x-auto');
 
     scrollContainers.forEach(container => {
@@ -22,3 +22,7 @@ export function scroll() {
         });
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    scroll();
+});

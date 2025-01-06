@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Dashboard'); ?>
 
-@section('title', 'Dashboard')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container mx-auto px-4 py-4 text-white">
         <!-- Header -->
         <div class="flex justify-between items-center mb-6">
@@ -20,13 +18,13 @@
         <!-- Search and filters -->
         <div class="flex items-center space-x-4 mb-6">
             <div class="flex-1">
-                <form action="{{ url()->current() }}" method="GET">
+                <form action="<?php echo e(url()->current()); ?>" method="GET">
                     <input
                         type="text" 
                         name="search"
                         id="search"
                         placeholder="Search for book" 
-                        value="{{ request()->get('search') }}"
+                        value="<?php echo e(request()->get('search')); ?>"
                         class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
                 </form>
             </div>
@@ -52,28 +50,30 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y dark:text-gray-400">
-                    @forelse($books as $book)
+                    <?php $__empty_1 = true; $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr class="hover:bg-gray-750">
                             <!-- Book Title -->
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="h-10 w-10 rounded-full bg-gray-600"></div>
                                     <div class="ml-4">
-                                        <div class="text-sm font-semibold text-white">{{ $book->title }}</div>
+                                        <div class="text-sm font-semibold text-white"><?php echo e($book->title); ?></div>
                                     </div>
                                 </div>
                             </td>
 
                             <!-- Author -->
                             <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                {{ $book->author }}
+                                <?php echo e($book->author); ?>
+
                             </td>
 
                             <!-- Status -->
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
-                                    <div class="h-2.5 w-2.5 rounded-full {{ $book->status == 'Available' ? 'bg-green-500' : 'bg-red-500' }} me-2"></div>
-                                    {{ $book->status ?? 'Available' }}
+                                    <div class="h-2.5 w-2.5 rounded-full <?php echo e($book->status == 'Available' ? 'bg-green-500' : 'bg-red-500'); ?> me-2"></div>
+                                    <?php echo e($book->status ?? 'Available'); ?>
+
                                 </div>
                             </td>
 
@@ -83,7 +83,7 @@
                                     <!-- Edit Button -->
                                     <button
                                         type="button"
-                                        onclick="openEditModal({{ $book->id }})"
+                                        onclick="openEditModal(<?php echo e($book->id); ?>)"
                                         data-modal-target="edit-modal"
                                         data-modal-toggle="edit-modal"
                                         class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -97,7 +97,7 @@
                                     <!-- Delete Button -->
                                     <button
                                         type="button"
-                                        onclick="openConfirmModal({{ $book->id }})"
+                                        onclick="openConfirmModal(<?php echo e($book->id); ?>)"
                                         data-modal-target="deleteModal"
                                         data-modal-toggle="deleteModal"
                                         class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
@@ -110,13 +110,13 @@
                                 </div>
                             </td>
                         </tr>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <tr>
                             <td colspan="4" class="px-6 py-4 text-center text-gray-400">
                                 No books found.
                             </td>
                         </tr>
-                    @endforelse
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
@@ -128,8 +128,8 @@
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <form id="bookForm" method="POST">
-                    @csrf
-                    @method('POST')
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('POST'); ?>
 
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
@@ -188,8 +188,8 @@
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <form id="editBookForm" method="POST">
-                    @csrf
-                    @method('POST')
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('POST'); ?>
 
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
@@ -385,10 +385,12 @@
             });
         })
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
 
 
 
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\guyza\Downloads\Library\resources\views/admin/index.blade.php ENDPATH**/ ?>

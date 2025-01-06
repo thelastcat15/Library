@@ -1,4 +1,4 @@
-export function initSlideshow() {
+function initSlideshow() {
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.bottom-4 button');
@@ -68,3 +68,8 @@ export function initSlideshow() {
       });
   });
 }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    initSlideshow();
+});
